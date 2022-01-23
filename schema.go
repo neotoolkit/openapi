@@ -9,12 +9,12 @@ type Schema struct {
 	Format     string      `json:"format,omitempty" yaml:"format,omitempty"`
 	Default    interface{} `json:"default,omitempty" yaml:"default,omitempty"`
 	Example    interface{} `json:"example,omitempty" yaml:"example,omitempty"`
-	Faker      string      `json:"x-faker,omitempty" yaml:"x-faker,omitempty"`
 	Required   []string    `json:"required,omitempty" yaml:"required,omitempty"`
+	Items      *Schema     `json:"items,omitempty" yaml:"items,omitempty"`
+	Ref        string      `json:"$ref,omitempty" yaml:"$ref,omitempty"`
 
-	Items *Schema `json:"items,omitempty" yaml:"items,omitempty"`
-
-	Reference string `json:"$ref,omitempty" yaml:"$ref,omitempty"`
+	// Dummy custom field
+	Faker string `json:"x-faker,omitempty" yaml:"x-faker,omitempty"`
 }
 
 // Schemas -.
@@ -27,8 +27,8 @@ type SchemaContext interface {
 
 // ResponseByExample -.
 func (s Schema) ResponseByExample(schemaContext SchemaContext) (interface{}, error) {
-	if s.Reference != "" {
-		schema, err := schemaContext.LookupByReference(s.Reference)
+	if s.Ref != "" {
+		schema, err := schemaContext.LookupByReference(s.Ref)
 		if err != nil {
 			return nil, fmt.Errorf("lookup: %w", err)
 		}
