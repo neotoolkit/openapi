@@ -120,7 +120,7 @@ func TestSchema_ResponseByExample(t *testing.T) {
 			fields: fields{
 				Type: "array",
 				Items: &openapi.Schema{
-					Reference: "#/components/schemas/User",
+					Ref: "#/components/schemas/User",
 				},
 			},
 			args: args{
@@ -140,7 +140,7 @@ func TestSchema_ResponseByExample(t *testing.T) {
 			fields: fields{
 				Properties: openapi.Schemas{
 					"id": &openapi.Schema{
-						Reference: "#/components/schemas/UUID",
+						Ref: "#/components/schemas/UUID",
 					},
 					"firstName": &openapi.Schema{
 						Type:    "string",
@@ -175,7 +175,7 @@ func TestSchema_ResponseByExample(t *testing.T) {
 				Example:    tc.fields.Example,
 				Faker:      tc.fields.Faker,
 				Items:      tc.fields.Items,
-				Reference:  tc.fields.Reference,
+				Ref:        tc.fields.Reference,
 			}
 			gotRes, err := s.ResponseByExample(tc.args.schemaContext)
 
