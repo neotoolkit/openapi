@@ -1,4 +1,4 @@
-package openapi3_test
+package openapi_test
 
 import (
 	"errors"
@@ -6,11 +6,11 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/go-dummy/dummy/internal/openapi3"
+	"github.com/go-dummy/openapi"
 )
 
 func TestSchemaError(t *testing.T) {
-	got := &openapi3.SchemaError{
+	got := &openapi.SchemaError{
 		Ref: "test",
 	}
 
@@ -18,12 +18,12 @@ func TestSchemaError(t *testing.T) {
 }
 
 func TestLookupByReference(t *testing.T) {
-	api := openapi3.OpenAPI{}
+	api := openapi.OpenAPI{}
 
 	schema, err := api.LookupByReference("")
 
-	var schemaErr *openapi3.SchemaError
+	var schemaErr *openapi.SchemaError
 
-	require.Equal(t, openapi3.Schema{}, schema)
+	require.Equal(t, openapi.Schema{}, schema)
 	require.True(t, errors.As(err, &schemaErr))
 }

@@ -1,4 +1,4 @@
-package openapi3
+package openapi
 
 // Media Type Object
 // See specification https://swagger.io/specification/#media-type-object

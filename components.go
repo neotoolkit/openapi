@@ -1,4 +1,4 @@
-package openapi3
+package openapi
 
 // Components -.
 type Components struct {

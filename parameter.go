@@ -1,4 +1,4 @@
-package openapi3
+package openapi
 
 // Parameter -.
 type Parameter struct {

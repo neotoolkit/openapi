@@ -1,4 +1,4 @@
-package openapi3
+package openapi
 
 // Content -.
 type Content map[string]*MediaType

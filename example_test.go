@@ -1,17 +1,17 @@
-package openapi3_test
+package openapi_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/go-dummy/dummy/internal/openapi3"
+	"github.com/go-dummy/openapi"
 )
 
 func TestExamples_GetKeys(t *testing.T) {
-	e := openapi3.Examples{
-		"first_example":  openapi3.Example{},
-		"second_example": openapi3.Example{},
+	e := openapi.Examples{
+		"first_example":  openapi.Example{},
+		"second_example": openapi.Example{},
 	}
 
 	res := e.GetKeys()
@@ -44,7 +44,7 @@ func TestExampleToResponse(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			got := openapi3.ExampleToResponse(tc.data)
+			got := openapi.ExampleToResponse(tc.data)
 
 			require.Equal(t, tc.want, got)
 		})

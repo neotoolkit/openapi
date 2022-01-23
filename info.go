@@ -1,4 +1,4 @@
-package openapi3
+package openapi
 
 // Info Object
 // See specification https://swagger.io/specification/#info-object

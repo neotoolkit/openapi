@@ -1,15 +1,15 @@
-package openapi3_test
+package openapi_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/go-dummy/dummy/internal/openapi3"
+	"github.com/go-dummy/openapi"
 )
 
 func TestMediaType_ResponseByExample(t *testing.T) {
-	m := openapi3.MediaType{
+	m := openapi.MediaType{
 		Example: []interface{}{},
 	}
 
@@ -19,9 +19,9 @@ func TestMediaType_ResponseByExample(t *testing.T) {
 func TestMediaType_ResponseByExamplesKey(t *testing.T) {
 	const key = "key"
 
-	m := openapi3.MediaType{
-		Examples: openapi3.Examples{
-			key: openapi3.Example{
+	m := openapi.MediaType{
+		Examples: openapi.Examples{
+			key: openapi.Example{
 				Value: map[string]interface{}{
 					"key": "value",
 				},

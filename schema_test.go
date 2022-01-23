@@ -1,29 +1,29 @@
-package openapi3_test
+package openapi_test
 
 import (
 	"fmt"
 	"testing"
 
-	"github.com/go-dummy/dummy/internal/openapi3"
+	"github.com/go-dummy/openapi"
 
 	"github.com/stretchr/testify/require"
 )
 
 type schemaContextStub struct{}
 
-func (s schemaContextStub) LookupByReference(ref string) (openapi3.Schema, error) {
-	userSchema := openapi3.Schema{
-		Properties: openapi3.Schemas{
-			"id": &openapi3.Schema{
+func (s schemaContextStub) LookupByReference(ref string) (openapi.Schema, error) {
+	userSchema := openapi.Schema{
+		Properties: openapi.Schemas{
+			"id": &openapi.Schema{
 				Type:    "string",
 				Format:  "uuid",
 				Example: "380ed0b7-eb21-4ad4-acd0-efa90cf69c6a",
 			},
-			"firstName": &openapi3.Schema{
+			"firstName": &openapi.Schema{
 				Type:    "string",
 				Example: "Larry",
 			},
-			"lastName": &openapi3.Schema{
+			"lastName": &openapi.Schema{
 				Type:    "string",
 				Example: "Page",
 			},
@@ -31,7 +31,7 @@ func (s schemaContextStub) LookupByReference(ref string) (openapi3.Schema, error
 		Type: "object",
 	}
 
-	uuidSchema := openapi3.Schema{
+	uuidSchema := openapi.Schema{
 		Type:    "string",
 		Format:  "uuid",
 		Example: "380ed0b7-eb21-4ad4-acd0-efa90cf69c6a",
@@ -43,24 +43,24 @@ func (s schemaContextStub) LookupByReference(ref string) (openapi3.Schema, error
 	case "#/components/schemas/UUID":
 		return uuidSchema, nil
 	default:
-		return openapi3.Schema{}, fmt.Errorf("unknown schema: %q", ref)
+		return openapi.Schema{}, fmt.Errorf("unknown schema: %q", ref)
 	}
 }
 
 func TestSchema_ResponseByExample(t *testing.T) {
 	type fields struct {
-		Properties openapi3.Schemas
+		Properties openapi.Schemas
 		Type       string
 		Format     string
 		Default    interface{}
 		Example    interface{}
 		Faker      string
-		Items      *openapi3.Schema
+		Items      *openapi.Schema
 		Reference  string
 	}
 
 	type args struct {
-		schemaContext openapi3.SchemaContext
+		schemaContext openapi.SchemaContext
 	}
 
 	tests := []struct {
@@ -73,17 +73,17 @@ func TestSchema_ResponseByExample(t *testing.T) {
 		{
 			name: "Simple schema",
 			fields: fields{
-				Properties: openapi3.Schemas{
-					"id": &openapi3.Schema{
+				Properties: openapi.Schemas{
+					"id": &openapi.Schema{
 						Type:    "string",
 						Format:  "uuid",
 						Example: "380ed0b7-eb21-4ad4-acd0-efa90cf69c6a",
 					},
-					"firstName": &openapi3.Schema{
+					"firstName": &openapi.Schema{
 						Type:    "string",
 						Example: "Larry",
 					},
-					"lastName": &openapi3.Schema{
+					"lastName": &openapi.Schema{
 						Type:    "string",
 						Example: "Page",
 					},
@@ -119,7 +119,7 @@ func TestSchema_ResponseByExample(t *testing.T) {
 			name: "Array schema with reference",
 			fields: fields{
 				Type: "array",
-				Items: &openapi3.Schema{
+				Items: &openapi.Schema{
 					Reference: "#/components/schemas/User",
 				},
 			},
@@ -138,15 +138,15 @@ func TestSchema_ResponseByExample(t *testing.T) {
 		{
 			name: "Schema property with reference",
 			fields: fields{
-				Properties: openapi3.Schemas{
-					"id": &openapi3.Schema{
+				Properties: openapi.Schemas{
+					"id": &openapi.Schema{
 						Reference: "#/components/schemas/UUID",
 					},
-					"firstName": &openapi3.Schema{
+					"firstName": &openapi.Schema{
 						Type:    "string",
 						Example: "Larry",
 					},
-					"lastName": &openapi3.Schema{
+					"lastName": &openapi.Schema{
 						Type:    "string",
 						Example: "Page",
 					},
@@ -167,7 +167,7 @@ func TestSchema_ResponseByExample(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			s := openapi3.Schema{
+			s := openapi.Schema{
 				Properties: tc.fields.Properties,
 				Type:       tc.fields.Type,
 				Format:     tc.fields.Format,
