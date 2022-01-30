@@ -19,8 +19,11 @@ func (e *SchemaError) Error() string {
 type OpenAPI struct {
 	OpenAPI    string     `json:"openapi" yaml:"openapi"`
 	Info       Info       `json:"info" yaml:"info"`
+	Servers    Servers    `json:"servers,omitempty" yaml:"servers,omitempty"`
 	Paths      Paths      `json:"paths" yaml:"paths"`
 	Components Components `json:"components,omitempty" yaml:"components,omitempty"`
+	Security   []Security `json:"security,omitempty" yaml:"security,omitempty"`
+	Tags       Tags       `json:"tags,omitempty" yaml:"tags,omitempty"`
 }
 
 // LookupByReference -.
