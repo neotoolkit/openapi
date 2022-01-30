@@ -9,7 +9,7 @@
 OpenAPI specification object model
 
 ## Features
-- OpenAPI specification
+- Easy to integrate.
 
 ## Installation
 ```shell
