@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/go-dummy/openapi"
+	"github.com/neotoolkit/openapi"
 )
 
 func TestSchemaError(t *testing.T) {

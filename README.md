@@ -13,7 +13,7 @@ OpenAPI specification object model
 
 ## Installation
 ```shell
-go get github.com/go-dummy/openapi
+go get github.com/neotoolkit/openapi
 ```
 
 ## Usage
@@ -28,21 +28,21 @@ See [these docs][pkg-url].
 
 [MIT License](LICENSE).
 
-[build-img]: https://github.com/go-dummy/openapi/workflows/build/badge.svg
-[build-url]: https://github.com/go-dummy/openapi/actions
-[pkg-img]: https://pkg.go.dev/badge/go-dummy/openapi
-[pkg-url]: https://pkg.go.dev/github.com/go-dummy/openapi
-[reportcard-img]: https://goreportcard.com/badge/go-dummy/openapi
-[reportcard-url]: https://goreportcard.com/report/go-dummy/openapi
-[coverage-img]: https://codecov.io/gh/go-dummy/openapi/branch/main/graph/badge.svg
-[coverage-url]: https://codecov.io/gh/go-dummy/openapi
-[version-img]: https://img.shields.io/github/v/release/go-dummy/openapi
-[version-url]: https://github.com/go-dummy/openapi/releases
+[build-img]: https://github.com/neotoolkit/openapi/workflows/build/badge.svg
+[build-url]: https://github.com/neotoolkit/openapi/actions
+[pkg-img]: https://pkg.go.dev/badge/neotoolkit/openapi
+[pkg-url]: https://pkg.go.dev/github.com/neotoolkit/openapi
+[reportcard-img]: https://goreportcard.com/badge/neotoolkit/openapi
+[reportcard-url]: https://goreportcard.com/report/neotoolkit/openapi
+[coverage-img]: https://codecov.io/gh/neotoolkit/openapi/branch/main/graph/badge.svg
+[coverage-url]: https://codecov.io/gh/neotoolkit/openapi
+[version-img]: https://img.shields.io/github/v/release/neotoolkit/openapi
+[version-url]: https://github.com/neotoolkit/openapi/releases
 
 ## Sponsors
 <p>
   <a href="https://evrone.com/?utm_source=github&utm_campaign=dotenv-linter">
-    <img src="https://raw.githubusercontent.com/go-dummy/.github/main/assets/sponsored_by_evrone.svg"
+    <img src="https://raw.githubusercontent.com/neotoolkit/.github/main/assets/sponsored_by_evrone.svg"
       alt="Sponsored by Evrone">
   </a>
 </p>

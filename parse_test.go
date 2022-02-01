@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/go-dummy/openapi"
+	"github.com/neotoolkit/openapi"
 	"github.com/stretchr/testify/require"
 )
 

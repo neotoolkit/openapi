@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/go-dummy/openapi"
+	"github.com/neotoolkit/openapi"
 )
 
 func TestMediaType_ResponseByExample(t *testing.T) {

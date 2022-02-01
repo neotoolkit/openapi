@@ -1,4 +1,4 @@
-module github.com/go-dummy/openapi
+module github.com/neotoolkit/openapi
 
 go 1.17
 
