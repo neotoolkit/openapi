@@ -18,6 +18,30 @@ go get github.com/neotoolkit/openapi
 
 ## Usage
 ```go
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"log"
+
+	"github.com/neotoolkit/openapi"
+)
+
+func main() {
+	file, err := ioutil.ReadFile("openapi.yml")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	oapi, err := openapi.Parse(file)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	
+	fmt.Println(oapi.OpenAPI)
+}
+
 ```
 
 ## Documentation
