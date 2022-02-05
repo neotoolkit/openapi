@@ -50,8 +50,7 @@ func (s Schema) propertiesExamples(schemaContext SchemaContext) (interface{}, er
 			return nil, fmt.Errorf("response from items: %w", err)
 		}
 
-		var res []interface{}
-		res = append(res, resp)
+		res := []interface{}{resp}
 
 		return res, nil
 	}
