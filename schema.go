@@ -4,6 +4,8 @@ import "fmt"
 
 // Schema -.
 type Schema struct {
+	ExtensionProps
+
 	Properties Schemas     `json:"properties,omitempty" yaml:"properties,omitempty"`
 	Type       string      `json:"type,omitempty" yaml:"type,omitempty"`
 	Format     string      `json:"format,omitempty" yaml:"format,omitempty"`
