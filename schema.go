@@ -2,13 +2,11 @@ package openapi
 
 import (
 	"fmt"
-
-	"github.com/goccy/go-yaml"
 )
 
 // Schema -.
 type Schema struct {
-	Extensions map[string]interface{} `json:"-" yaml:"-"`
+	Extensions
 
 	Properties Schemas     `json:"properties,omitempty" yaml:"properties,omitempty"`
 	Type       string      `json:"type,omitempty" yaml:"type,omitempty"`
@@ -20,20 +18,9 @@ type Schema struct {
 	Ref        string      `json:"$ref,omitempty" yaml:"$ref,omitempty"`
 }
 
-// GetExtensions -.
-func (s *Schema) GetExtensions() (map[string]interface{}, error) {
-	bytes, err := yaml.Marshal(s.Extensions)
-	if err != nil {
-		return nil, err
-	}
-
-	var extensions map[string]interface{}
-
-	if err := yaml.Unmarshal(bytes, &extensions); err != nil {
-		return nil, err
-	}
-
-	return extensions, nil
+// IsRef -.
+func (s Schema) IsRef() bool {
+	return s.Ref != ""
 }
 
 // Schemas -.

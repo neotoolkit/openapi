@@ -183,18 +183,3 @@ func TestSchema_ResponseByExample(t *testing.T) {
 		})
 	}
 }
-
-func TestGetExtensions(t *testing.T) {
-	s := openapi.Schema{
-		Extensions: map[string]interface{}{
-			"x-example": "x-example",
-		},
-	}
-
-	e, err := s.GetExtensions()
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	require.IsType(t, map[string]interface{}{}, e)
-}
