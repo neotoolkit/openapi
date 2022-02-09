@@ -1,10 +1,14 @@
 package openapi
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/goccy/go-yaml"
+)
 
 // Schema -.
 type Schema struct {
-	Extensions
+	Extensions map[string]interface{} `json:"-" yaml:"-"`
 
 	Properties Schemas     `json:"properties,omitempty" yaml:"properties,omitempty"`
 	Type       string      `json:"type,omitempty" yaml:"type,omitempty"`
@@ -14,9 +18,22 @@ type Schema struct {
 	Required   []string    `json:"required,omitempty" yaml:"required,omitempty"`
 	Items      *Schema     `json:"items,omitempty" yaml:"items,omitempty"`
 	Ref        string      `json:"$ref,omitempty" yaml:"$ref,omitempty"`
+}
 
-	// Dummy custom field
-	Faker string `json:"x-faker,omitempty" yaml:"x-faker,omitempty"`
+// GetExtensions -.
+func (s Schema) GetExtensions() (map[string]interface{}, error) {
+	bytes, err := yaml.Marshal(s)
+	if err != nil {
+		return nil, err
+	}
+
+	var extensions map[string]interface{}
+
+	if err := yaml.Unmarshal(bytes, &extensions); err != nil {
+		return nil, err
+	}
+
+	return extensions, nil
 }
 
 // Schemas -.

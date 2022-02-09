@@ -54,7 +54,6 @@ func TestSchema_ResponseByExample(t *testing.T) {
 		Format     string
 		Default    interface{}
 		Example    interface{}
-		Faker      string
 		Items      *openapi.Schema
 		Reference  string
 	}
@@ -173,7 +172,6 @@ func TestSchema_ResponseByExample(t *testing.T) {
 				Format:     tc.fields.Format,
 				Default:    tc.fields.Default,
 				Example:    tc.fields.Example,
-				Faker:      tc.fields.Faker,
 				Items:      tc.fields.Items,
 				Ref:        tc.fields.Reference,
 			}
@@ -184,4 +182,15 @@ func TestSchema_ResponseByExample(t *testing.T) {
 			require.Equal(t, tc.wantErr, err != nil)
 		})
 	}
+}
+
+func TestGetExtensions(t *testing.T) {
+	s := openapi.Schema{}
+
+	e, err := s.GetExtensions()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	require.IsType(t, map[string]interface{}{}, e)
 }

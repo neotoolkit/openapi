@@ -37,8 +37,12 @@ func TestExampleToResponse(t *testing.T) {
 		},
 		{
 			name: "",
-			data: []interface{}{},
-			want: []map[string]interface{}{},
+			data: []interface{}{
+				map[string]interface{}{},
+			},
+			want: []map[string]interface{}{
+				{},
+			},
 		},
 	}
 
