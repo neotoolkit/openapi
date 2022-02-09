@@ -54,7 +54,6 @@ func TestSchema_ResponseByExample(t *testing.T) {
 		Format     string
 		Default    interface{}
 		Example    interface{}
-		Faker      string
 		Items      *openapi.Schema
 		Reference  string
 	}
@@ -173,7 +172,6 @@ func TestSchema_ResponseByExample(t *testing.T) {
 				Format:     tc.fields.Format,
 				Default:    tc.fields.Default,
 				Example:    tc.fields.Example,
-				Faker:      tc.fields.Faker,
 				Items:      tc.fields.Items,
 				Ref:        tc.fields.Reference,
 			}
