@@ -7,16 +7,38 @@ import (
 )
 
 func TestGetExtensions(t *testing.T) {
-	s := openapi.Extensions{}
-
-	s.Extensions = map[string]interface{}{
-		"test": "test",
+	tests := []struct {
+		name       string
+		extensions map[string]interface{}
+		want       interface{}
+		err        bool
+	}{
+		{
+			name:       "",
+			extensions: nil,
+			want:       map[string]interface{}{},
+			err:        false,
+		},
+		{
+			name: "",
+			extensions: map[string]interface{}{
+				"chan": make(chan byte),
+			},
+			want: map[string]interface{}(nil),
+			err:  true,
+		},
 	}
 
-	e, err := s.GetExtensions()
-	if err != nil {
-		t.Fatal(err)
-	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			s := openapi.Extensions{}
 
-	require.Equal(t, "test", e["test"])
+			s.Extensions = tc.extensions
+
+			e, err := s.GetExtensions()
+
+			require.Equal(t, tc.want, e)
+			require.True(t, err != nil == tc.err)
+		})
+	}
 }
