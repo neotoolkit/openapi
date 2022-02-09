@@ -185,7 +185,11 @@ func TestSchema_ResponseByExample(t *testing.T) {
 }
 
 func TestGetExtensions(t *testing.T) {
-	s := openapi.Schema{}
+	s := openapi.Schema{
+		Extensions: map[string]interface{}{
+			"x-example": "x-example",
+		},
+	}
 
 	e, err := s.GetExtensions()
 	if err != nil {
