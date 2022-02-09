@@ -41,7 +41,7 @@ func TestExampleToResponse(t *testing.T) {
 				map[string]interface{}{},
 			},
 			want: []map[string]interface{}{
-				map[string]interface{}{},
+				{},
 			},
 		},
 	}
