@@ -4,7 +4,7 @@ import "fmt"
 
 // Schema -.
 type Schema struct {
-	Extensions map[string]interface{} `json:"-" yaml:"-"`
+	Extensions
 
 	Properties Schemas     `json:"properties,omitempty" yaml:"properties,omitempty"`
 	Type       string      `json:"type,omitempty" yaml:"type,omitempty"`
