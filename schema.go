@@ -21,7 +21,7 @@ type Schema struct {
 }
 
 // GetExtensions -.
-func (s Schema) GetExtensions() (map[string]interface{}, error) {
+func (s *Schema) GetExtensions() (map[string]interface{}, error) {
 	bytes, err := yaml.Marshal(s.Extensions)
 	if err != nil {
 		return nil, err
