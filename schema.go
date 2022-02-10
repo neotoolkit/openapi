@@ -6,8 +6,6 @@ import (
 
 // Schema -.
 type Schema struct {
-	Extensions
-
 	Properties Schemas     `json:"properties,omitempty" yaml:"properties,omitempty"`
 	Type       string      `json:"type,omitempty" yaml:"type,omitempty"`
 	Format     string      `json:"format,omitempty" yaml:"format,omitempty"`
@@ -16,6 +14,7 @@ type Schema struct {
 	Required   []string    `json:"required,omitempty" yaml:"required,omitempty"`
 	Items      *Schema     `json:"items,omitempty" yaml:"items,omitempty"`
 	Ref        string      `json:"$ref,omitempty" yaml:"$ref,omitempty"`
+	Faker      string      `json:"x-faker,omitempty" yaml:"x-faker,omitempty"`
 }
 
 // IsRef -.
