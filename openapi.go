@@ -17,13 +17,13 @@ func (e *SchemaError) Error() string {
 // OpenAPI Object
 // See specification https://swagger.io/specification/#openapi-object
 type OpenAPI struct {
-	OpenAPI    string     `json:"openapi" yaml:"openapi"`
-	Info       Info       `json:"info" yaml:"info"`
-	Servers    Servers    `json:"servers,omitempty" yaml:"servers,omitempty"`
 	Paths      Paths      `json:"paths" yaml:"paths"`
 	Components Components `json:"components,omitempty" yaml:"components,omitempty"`
+	OpenAPI    string     `json:"openapi" yaml:"openapi"`
+	Servers    Servers    `json:"servers,omitempty" yaml:"servers,omitempty"`
 	Security   []Security `json:"security,omitempty" yaml:"security,omitempty"`
 	Tags       Tags       `json:"tags,omitempty" yaml:"tags,omitempty"`
+	Info       Info       `json:"info" yaml:"info"`
 }
 
 // LookupByReference -.
