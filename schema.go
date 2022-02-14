@@ -27,13 +27,13 @@ type Schemas map[string]*Schema
 
 // SchemaContext -.
 type SchemaContext interface {
-	LookupByReference(ref string) (Schema, error)
+	LookupSchemaByReference(ref string) (Schema, error)
 }
 
 // ResponseByExample -.
 func (s Schema) ResponseByExample(schemaContext SchemaContext) (interface{}, error) {
 	if s.Ref != "" {
-		schema, err := schemaContext.LookupByReference(s.Ref)
+		schema, err := schemaContext.LookupSchemaByReference(s.Ref)
 		if err != nil {
 			return nil, fmt.Errorf("lookup: %w", err)
 		}

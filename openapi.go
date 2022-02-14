@@ -14,6 +14,16 @@ func (e *SchemaError) Error() string {
 	return "unknown schema " + e.Ref
 }
 
+// RequestBodyError -.
+type RequestBodyError struct {
+	Ref string
+}
+
+// Error -.
+func (e *RequestBodyError) Error() string {
+	return "unknown request body " + e.Ref
+}
+
 // OpenAPI Object
 // See specification https://swagger.io/specification/#openapi-object
 type OpenAPI struct {
@@ -26,19 +36,23 @@ type OpenAPI struct {
 	Info       Info       `json:"info" yaml:"info"`
 }
 
-// LookupByReference -.
-func (api OpenAPI) LookupByReference(ref string) (Schema, error) {
+// LookupSchemaByReference -.
+func (api OpenAPI) LookupSchemaByReference(ref string) (Schema, error) {
 	schema, ok := api.Components.Schemas[schemaKey(ref)]
 	if ok {
 		return *schema, nil
 	}
 
-	schema, ok = api.Components.RequestBodies[requestBodiesKey(ref)]
+	return Schema{}, &SchemaError{Ref: ref}
+}
+
+func (api OpenAPI) LookupRequestBodyByReference(ref string) (RequestBody, error) {
+	requestBody, ok := api.Components.RequestBodies[requestBodiesKey(ref)]
 	if ok {
-		return *schema, nil
+		return *requestBody, nil
 	}
 
-	return Schema{}, &SchemaError{Ref: ref}
+	return RequestBody{}, &RequestBodyError{Ref: ref}
 }
 
 func schemaKey(ref string) string {

@@ -11,7 +11,7 @@ import (
 
 type schemaContextStub struct{}
 
-func (s schemaContextStub) LookupByReference(ref string) (openapi.Schema, error) {
+func (s schemaContextStub) LookupSchemaByReference(ref string) (openapi.Schema, error) {
 	userSchema := openapi.Schema{
 		Properties: openapi.Schemas{
 			"id": &openapi.Schema{
