@@ -33,7 +33,7 @@ func (api OpenAPI) LookupByReference(ref string) (Schema, error) {
 		return *schema, nil
 	}
 
-	schema, ok = api.Components.Schemas[requestBodiesKey(ref)]
+	schema, ok = api.Components.RequestBodies[requestBodiesKey(ref)]
 	if ok {
 		return *schema, nil
 	}
