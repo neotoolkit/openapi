@@ -28,15 +28,25 @@ type OpenAPI struct {
 
 // LookupByReference -.
 func (api OpenAPI) LookupByReference(ref string) (Schema, error) {
-	schema := api.Components.Schemas[schemaKey(ref)]
-	if nil == schema {
-		return Schema{}, &SchemaError{Ref: ref}
+	schema, ok := api.Components.Schemas[schemaKey(ref)]
+	if ok {
+		return *schema, nil
 	}
 
-	return *schema, nil
+	schema, ok = api.Components.Schemas[requestBodiesKey(ref)]
+	if ok {
+		return *schema, nil
+	}
+
+	return Schema{}, &SchemaError{Ref: ref}
 }
 
 func schemaKey(ref string) string {
 	const prefix = "#/components/schemas/"
+	return strings.TrimPrefix(ref, prefix)
+}
+
+func requestBodiesKey(ref string) string {
+	const prefix = "#/components/requestBodies/"
 	return strings.TrimPrefix(ref, prefix)
 }
