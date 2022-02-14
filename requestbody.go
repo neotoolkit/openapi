@@ -7,3 +7,6 @@ type RequestBody struct {
 	Content     Content `json:"content,omitempty" yaml:"content,omitempty"`
 	Ref         string  `json:"$ref,omitempty" yaml:"$ref,omitempty"`
 }
+
+// RequestBodies -.
+type RequestBodies map[string]*RequestBody
