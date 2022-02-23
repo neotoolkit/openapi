@@ -8,5 +8,10 @@ type RequestBody struct {
 	Ref         string  `json:"$ref,omitempty" yaml:"$ref,omitempty"`
 }
 
+// IsRef -.
+func (body RequestBody) IsRef() bool {
+	return body.Ref != ""
+}
+
 // RequestBodies -.
 type RequestBodies map[string]*RequestBody
