@@ -14,6 +14,8 @@ type Schema struct {
 	Required   []string    `json:"required,omitempty" yaml:"required,omitempty"`
 	Items      *Schema     `json:"items,omitempty" yaml:"items,omitempty"`
 	Ref        string      `json:"$ref,omitempty" yaml:"$ref,omitempty"`
+	MinItems   int         `json:"minItems,omitempty" yaml:"minItems,omitempty"`
+	MaxItems   int         `json:"maxItems,omitempty" yaml:"maxItems,omitempty"`
 	Faker      string      `json:"x-faker,omitempty" yaml:"x-faker,omitempty"`
 }
 
