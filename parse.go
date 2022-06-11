@@ -1,7 +1,7 @@
 package openapi
 
 import (
-	"github.com/goccy/go-yaml"
+	"github.com/ghodss/yaml"
 )
 
 func Parse(data []byte) (OpenAPI, error) {
